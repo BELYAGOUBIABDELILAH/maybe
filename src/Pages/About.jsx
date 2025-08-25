@@ -146,7 +146,6 @@ const About = () => {
   );
 };
 
-export default About;
 
 
   // Optimized AOS initialization
