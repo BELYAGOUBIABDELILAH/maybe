@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "Title": "CityHealth Platform",
+    "Description": "A digital platform connecting citizens with verified healthcare providers in Sidi Bel Abbès.",
+    "Img": "/images/cityhealth.png",
+    "Link": "https://cityhealth.example.com",
+    "Github": "https://github.com/BELYAGOUBIABDELILAH/cityhealth",
+    "TechStack": ["React", "Tailwind", "Firebase"],
+    "Features": [
+      "Search verified providers",
+      "Interactive map",
+      "Provider dashboard",
+      "Admin moderation"
+    ]
+  },
+  {
+    "id": 2,
+    "Title": "Gym Management System",
+    "Description": "A modern web app to manage gym members, subscriptions, and sales.",
+    "Img": "/images/gym.png",
+    "Link": "https://gym.example.com",
+    "Github": "https://github.com/BELYAGOUBIABDELILAH/gym-system",
+    "TechStack": ["HTML", "CSS", "JavaScript", "Firebase"],
+    "Features": [
+      "User authentication",
+      "Manage members & products",
+      "Sales tracking",
+      "Responsive dashboard"
+    ]
+  }
+]

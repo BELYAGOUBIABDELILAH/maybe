@@ -80,10 +80,11 @@ const PAUSE_DURATION = 2000;
 const WORDS = ["Network & Telecom Student", "Tech Enthusiast"];
 const TECH_STACK = ["React", "Javascript", "Node.js", "Tailwind"];
 const SOCIAL_LINKS = [
-  { icon: Github, link: "https://github.com/EkiZR" },
-  { icon: Linkedin, link: "https://www.linkedin.com/in/ekizr/" },
-  { icon: Instagram, link: "https://www.instagram.com/ekizr_/?hl=id" }
+  { icon: Github, link: "https://github.com/BELYAGOUBIABDELILAH" },
+  { icon: Mail, link: "mailto:belyagoubiabdillah@gmail.com" },
+  { icon: Instagram, link: "https://www.instagram.com/belyabdelilah/" }
 ];
+
 
 const Home = () => {
   const [text, setText] = useState("")
@@ -180,11 +181,14 @@ const Home = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed font-light"
+                <p 
+                  className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed font-light"
                   data-aos="fade-up"
-                  data-aos-delay="1000">
-                  Menciptakan Website Yang Inovatif, Fungsional, dan User-Friendly untuk Solusi Digital.
+                  data-aos-delay="1000"
+                >
+                  Building innovative, functional, and user-friendly digital solutions that make technology accessible for everyone.
                 </p>
+
 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-3 justify-start" data-aos="fade-up" data-aos-delay="1200">

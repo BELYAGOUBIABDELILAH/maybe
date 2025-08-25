@@ -21,9 +21,10 @@ const Header = memo(() => (
       data-aos-duration="800"
     >
       <Sparkles className="w-5 h-5 text-purple-400" />
-      Transforming ideas into digital experiences
+      Turning ideas into secure and innovative digital solutions
       <Sparkles className="w-5 h-5 text-purple-400" />
     </p>
+
   </div>
 ));
 
@@ -112,23 +113,25 @@ const StatCard = memo(({ icon: Icon, color, value, label, description, animation
   </div>
 ));
 
-const AboutPage = () => {
-  // Memoized calculations
-  const { totalProjects, totalCertificates, YearExperience } = useMemo(() => {
-    const storedProjects = JSON.parse(localStorage.getItem("projects") || "[]");
-    const storedCertificates = JSON.parse(localStorage.getItem("certificates") || "[]");
-    
-    const startDate = new Date("2021-11-06");
-    const today = new Date();
-    const experience = today.getFullYear() - startDate.getFullYear() -
-      (today < new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate()) ? 1 : 0);
+// Memoized calculations
+const { totalProjects, totalCertificates, yearExperience } = useMemo(() => {
+  // Load projects & certificates from localStorage or fallback to []
+  const storedProjects = JSON.parse(localStorage.getItem("projects") || "[]");
+  const storedCertificates = JSON.parse(localStorage.getItem("certificates") || "[]");
 
-    return {
-      totalProjects: storedProjects.length,
-      totalCertificates: storedCertificates.length,
-      YearExperience: experience
-    };
-  }, []);
+  // Calculate years of experience
+  const startDate = new Date("2021-11-06"); // your career start date
+  const today = new Date();
+  const experience =
+    today.getFullYear() - startDate.getFullYear() -
+    (today < new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate()) ? 1 : 0);
+
+  return {
+    totalProjects: storedProjects.length || 5,   // fallback: 5 example projects
+    totalCertificates: storedCertificates.length || 3, // fallback: 3 certifs
+    yearExperience: experience > 0 ? experience : 1 // at least 1 year
+  };
+}, []);
 
   // Optimized AOS initialization
   useEffect(() => {
@@ -205,8 +208,9 @@ const AboutPage = () => {
                 data-aos="fade-right"
                 data-aos-duration="1300"
               >
-                Eki Zulfar Rachman
+                Belyagoubi Mohammed Abdelilah
               </span>
+
             </h2>
             
             <p 
@@ -214,14 +218,13 @@ const AboutPage = () => {
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-              seorang siswa Teknik Jaringan Komputer dan Telekomunikasi yang
-              tertarik dalam pengembangan Front-End. Saya berfokus pada
-              menciptakan pengalaman digital yang menarik dan selalu berusaha
-              memberikan solusi terbaik dalam setiap proyek.
+              Master’s student in Networks, Systems, and Information Security, passionate about 
+              AI, Web Development, and Cybersecurity. I create innovative and secure 
+              digital solutions with a focus on usability and impact.
             </p>
 
-            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-4 lg:px-0 w-full">
-              <a href="https://drive.google.com/drive/folders/1BOm51Grsabb3zj6Xk27K-iRwI1zITcpo" className="w-full lg:w-auto">
+
+            <a href="/Belyagoubi_CV.pdf" download className="w-full lg:w-auto">
               <button 
                 data-aos="fade-up"
                 data-aos-duration="800"
@@ -229,17 +232,8 @@ const AboutPage = () => {
               >
                 <FileText className="w-4 h-4 sm:w-5 sm:h-5" /> Download CV
               </button>
-              </a>
-              <a href="#Portofolio" className="w-full lg:w-auto">
-              <button 
-                data-aos="fade-up"
-                data-aos-duration="1000"
-                className="w-full lg:w-auto sm:px-6 py-2 sm:py-3 rounded-lg border border-[#a855f7]/50 text-[#a855f7] font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center lg:justify-start gap-2 hover:bg-[#a855f7]/10 animate-bounce-slow delay-200"
-              >
-                <Code className="w-4 h-4 sm:w-5 sm:h-5" /> View Projects
-              </button>
-              </a>
-            </div>
+            </a>
+
           </div>
 
           <ProfileImage />
@@ -274,6 +268,6 @@ const AboutPage = () => {
       `}</style>
     </div>
   );
-};
+;
 
 export default memo(AboutPage);
