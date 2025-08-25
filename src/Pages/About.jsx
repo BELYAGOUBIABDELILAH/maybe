@@ -114,24 +114,40 @@ const StatCard = memo(({ icon: Icon, color, value, label, description, animation
 ));
 
 // Memoized calculations
-const { totalProjects, totalCertificates, yearExperience } = useMemo(() => {
-  // Load projects & certificates from localStorage or fallback to []
-  const storedProjects = JSON.parse(localStorage.getItem("projects") || "[]");
-  const storedCertificates = JSON.parse(localStorage.getItem("certificates") || "[]");
 
-  // Calculate years of experience
-  const startDate = new Date("2021-11-06"); // your career start date
-  const today = new Date();
-  const experience =
-    today.getFullYear() - startDate.getFullYear() -
-    (today < new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate()) ? 1 : 0);
+const About = () => {
+  const { totalProjects, totalCertificates, YearExperience } = useMemo(() => {
+    const storedProjects = JSON.parse(localStorage.getItem("projects") || "[]");
+    const storedCertificates = JSON.parse(localStorage.getItem("certificates") || "[]");
 
-  return {
-    totalProjects: storedProjects.length || 5,   // fallback: 5 example projects
-    totalCertificates: storedCertificates.length || 3, // fallback: 3 certifs
-    yearExperience: experience > 0 ? experience : 1 // at least 1 year
-  };
-}, []);
+    const startDate = new Date("2021-11-06");
+    const today = new Date();
+    const experience =
+      today.getFullYear() -
+      startDate.getFullYear() -
+      (today < new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate()) ? 1 : 0);
+
+    return {
+      totalProjects: storedProjects.length,
+      totalCertificates: storedCertificates.length,
+      YearExperience: experience,
+    };
+  }, []);
+
+  return (
+    <div
+      className="h-auto pb-[10%] text-white overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] mt-10 sm-mt-0"
+    >
+      <h2 className="text-2xl font-bold">About Me</h2>
+      <p>Projects: {totalProjects}</p>
+      <p>Certificates: {totalCertificates}</p>
+      <p>Years of Experience: {YearExperience}</p>
+    </div>
+  );
+};
+
+export default About;
+
 
   // Optimized AOS initialization
   useEffect(() => {
