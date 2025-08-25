@@ -21,10 +21,9 @@ const Header = memo(() => (
       data-aos-duration="800"
     >
       <Sparkles className="w-5 h-5 text-purple-400" />
-      Turning ideas into secure and innovative digital solutions
+      Transforming ideas into digital experiences
       <Sparkles className="w-5 h-5 text-purple-400" />
     </p>
-
   </div>
 ));
 
@@ -113,40 +112,23 @@ const StatCard = memo(({ icon: Icon, color, value, label, description, animation
   </div>
 ));
 
-// Memoized calculations
-
-const About = () => {
+const AboutPage = () => {
+  // Memoized calculations
   const { totalProjects, totalCertificates, YearExperience } = useMemo(() => {
     const storedProjects = JSON.parse(localStorage.getItem("projects") || "[]");
     const storedCertificates = JSON.parse(localStorage.getItem("certificates") || "[]");
-
+    
     const startDate = new Date("2021-11-06");
     const today = new Date();
-    const experience =
-      today.getFullYear() -
-      startDate.getFullYear() -
+    const experience = today.getFullYear() - startDate.getFullYear() -
       (today < new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate()) ? 1 : 0);
 
     return {
       totalProjects: storedProjects.length,
       totalCertificates: storedCertificates.length,
-      YearExperience: experience,
+      YearExperience: experience
     };
   }, []);
-
-  return (
-    <div
-      className="h-auto pb-[10%] text-white overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] mt-10 sm-mt-0"
-    >
-      <h2 className="text-2xl font-bold">About Me</h2>
-      <p>Projects: {totalProjects}</p>
-      <p>Certificates: {totalCertificates}</p>
-      <p>Years of Experience: {YearExperience}</p>
-    </div>
-  );
-};
-
-
 
   // Optimized AOS initialization
   useEffect(() => {
@@ -223,9 +205,8 @@ const About = () => {
                 data-aos="fade-right"
                 data-aos-duration="1300"
               >
-                Belyagoubi Mohammed Abdelilah
+                Eki Zulfar Rachman
               </span>
-
             </h2>
             
             <p 
@@ -233,13 +214,14 @@ const About = () => {
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-              Master’s student in Networks, Systems, and Information Security, passionate about 
-              AI, Web Development, and Cybersecurity. I create innovative and secure 
-              digital solutions with a focus on usability and impact.
+              seorang siswa Teknik Jaringan Komputer dan Telekomunikasi yang
+              tertarik dalam pengembangan Front-End. Saya berfokus pada
+              menciptakan pengalaman digital yang menarik dan selalu berusaha
+              memberikan solusi terbaik dalam setiap proyek.
             </p>
 
-
-            <a href="/Belyagoubi_CV.pdf" download className="w-full lg:w-auto">
+            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-4 lg:px-0 w-full">
+              <a href="https://drive.google.com/drive/folders/1BOm51Grsabb3zj6Xk27K-iRwI1zITcpo" className="w-full lg:w-auto">
               <button 
                 data-aos="fade-up"
                 data-aos-duration="800"
@@ -247,8 +229,17 @@ const About = () => {
               >
                 <FileText className="w-4 h-4 sm:w-5 sm:h-5" /> Download CV
               </button>
-            </a>
-
+              </a>
+              <a href="#Portofolio" className="w-full lg:w-auto">
+              <button 
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                className="w-full lg:w-auto sm:px-6 py-2 sm:py-3 rounded-lg border border-[#a855f7]/50 text-[#a855f7] font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center lg:justify-start gap-2 hover:bg-[#a855f7]/10 animate-bounce-slow delay-200"
+              >
+                <Code className="w-4 h-4 sm:w-5 sm:h-5" /> View Projects
+              </button>
+              </a>
+            </div>
           </div>
 
           <ProfileImage />
@@ -283,6 +274,6 @@ const About = () => {
       `}</style>
     </div>
   );
-;
+};
 
 export default memo(AboutPage);
